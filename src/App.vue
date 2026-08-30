@@ -1,7 +1,5 @@
 <template>
   <div class="app-shell">
-
-    <!-- HEADER -->
     <header class="hero">
       <div class="brand">
         <div class="logo">♫</div>
@@ -24,8 +22,6 @@
     </header>
 
     <main>
-
-      <!-- STATISTICS -->
       <section class="stats-grid">
 
         <article class="stat-card">
@@ -56,12 +52,7 @@
         </article>
 
       </section>
-
-
-      <!-- MAIN WORKSPACE -->
       <section class="workspace">
-
-        <!-- SONG CATALOG -->
         <div class="catalog-panel">
 
           <div class="section-heading">
@@ -79,9 +70,6 @@
             </span>
 
           </div>
-
-
-          <!-- SEARCH AND FILTER -->
           <div class="filters">
 
             <label class="search-box">
@@ -131,10 +119,6 @@
             </button>
 
           </div>
-
-
-          <!-- SONG LIST -->
-
           <div
             v-if="filteredSongs.length > 0"
             class="song-grid"
@@ -146,8 +130,6 @@
               class="song-card"
               :class="{ 'in-playlist': song.inPlaylist }"
             >
-
-              <!-- ALBUM COVER -->
               <div class="cover-wrap">
 
                 <img
@@ -172,9 +154,6 @@
                 </span>
 
               </div>
-
-
-              <!-- SONG INFORMATION -->
               <div class="song-info">
 
                 <div class="song-topline">
@@ -190,9 +169,6 @@
                     </p>
 
                   </div>
-
-
-                  <!-- FAVORITE -->
                   <button
                     class="favorite-button"
                     :class="{ active: song.isFavorite }"
@@ -202,9 +178,6 @@
                   </button>
 
                 </div>
-
-
-                <!-- SONG DETAILS -->
                 <div class="song-meta">
 
                   <span>
@@ -218,9 +191,6 @@
                   </span>
 
                 </div>
-
-
-                <!-- ADD / REMOVE -->
                 <button
                   v-if="song.inPlaylist"
                   class="action-button remove"
@@ -250,9 +220,6 @@
             </article>
 
           </div>
-
-
-          <!-- EMPTY SEARCH RESULT -->
           <div
             v-else
             class="empty-state"
@@ -280,9 +247,6 @@
           </div>
 
         </div>
-
-
-        <!-- CURRENT SONG -->
         <aside class="now-playing">
 
           <div class="now-heading">
@@ -302,9 +266,6 @@
             <span class="pulse-dot"></span>
 
           </div>
-
-
-          <!-- SONG SELECTED -->
           <div
             v-if="currentSong"
             class="current-content"
@@ -354,9 +315,6 @@
             </button>
 
           </div>
-
-
-          <!-- NO SONG SELECTED -->
           <div
             v-else
             class="no-selection"
@@ -376,29 +334,17 @@
             </p>
 
           </div>
-
-
-          <!-- PLAYLIST STATUS -->
           <div class="playlist-status">
 
             <h3>
               Playlist Status
             </h3>
-
-
-            <!-- v-if -->
             <p v-if="playlistCount === 0">
               Your playlist is empty.
             </p>
-
-
-            <!-- v-else-if -->
             <p v-else-if="playlistCount < 3">
               Add more songs to build your playlist!
             </p>
-
-
-            <!-- v-else -->
             <p v-else>
               Your playlist is ready to go! 🎶
             </p>
@@ -422,9 +368,6 @@
       </section>
 
     </main>
-
-
-    <!-- NOTIFICATION -->
     <div
       v-if="notification"
       class="notification"
@@ -436,161 +379,139 @@
 </template>
 
 
+```vue
 <script lang="ts">
-
 import { defineComponent } from 'vue'
 
-
 interface Song {
-
   id: number
-
   title: string
-
   artist: string
-
   genre: string
-
   duration: string
-
   cover: string
-
   isFavorite: boolean
-
   inPlaylist: boolean
-
 }
 
-
 export default defineComponent({
-
   name: 'App',
 
-
-  /*
-   * data()
-   * Stores the application's state.
-   */
   data() {
-
     const songs: Song[] = [
-
       {
         id: 1,
-        title: 'Golden Hour',
-        artist: 'Nova Lane',
-        genre: 'Pop',
-        duration: '3:42',
-        cover: 'https://picsum.photos/seed/goldenhour/600/600',
+        title: 'Tadhana',
+        artist: 'Up Dharma Down',
+        genre: 'OPM',
+        duration: '4:01',
+        cover: 'https://i1.sndcdn.com/artworks-klRPLROGlkbVZu6X-hac0FQ-t500x500.jpg',
         isFavorite: true,
         inPlaylist: true
       },
 
       {
         id: 2,
-        title: 'Neon Skies',
-        artist: 'The Daylights',
-        genre: 'Rock',
-        duration: '4:08',
-        cover: 'https://picsum.photos/seed/neonskies/600/600',
+        title: 'Mundo',
+        artist: 'IV of Spades',
+        genre: 'OPM',
+        duration: '4:16',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLF2fCYmgPfNhgwCtNpY4epq0NCm8I_hux6JDRuTq0oA&s=10',
         isFavorite: false,
         inPlaylist: false
       },
 
       {
         id: 3,
-        title: 'Midnight Drive',
-        artist: 'Kai Rivers',
-        genre: 'Hip-Hop',
-        duration: '3:31',
-        cover: 'https://picsum.photos/seed/midnightdrive/600/600',
+        title: 'Buwan',
+        artist: 'Juan Karlos',
+        genre: 'OPM',
+        duration: '4:27',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ0WDIh6Maz2F7yCEd7RK7lMhMb9fHrvMH98GurUdEqw&s=10',
         isFavorite: true,
         inPlaylist: true
       },
 
       {
         id: 4,
-        title: 'Island Lights',
-        artist: 'Maya Cruz',
+        title: 'Raining in Manila',
+        artist: 'Lola Amour',
         genre: 'OPM',
-        duration: '4:15',
-        cover: 'https://picsum.photos/seed/islandlights/600/600',
+        duration: '4:17',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwIGlC0cH6qQU0zebG5DIxn2l68w8o5Rq5Tf7sz9iOg&s=10',
         isFavorite: false,
         inPlaylist: false
       },
 
       {
         id: 5,
-        title: 'After the Rain',
-        artist: 'Luna Park',
-        genre: 'R&B',
-        duration: '3:56',
-        cover: 'https://picsum.photos/seed/aftertherain/600/600',
+        title: 'Kathang Isip',
+        artist: 'Ben&Ben',
+        genre: 'OPM',
+        duration: '4:17',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTap_FoINujsMRKNoOcPZYBi9TPgxEiGoyB3coGk_4pew&s=10',
         isFavorite: true,
         inPlaylist: false
       },
 
       {
         id: 6,
-        title: 'Electric Heart',
-        artist: 'Echo Avenue',
-        genre: 'Pop',
-        duration: '3:24',
-        cover: 'https://picsum.photos/seed/electricheart/600/600',
+        title: 'Leaves',
+        artist: 'Ben&Ben',
+        genre: 'OPM',
+        duration: '4:00',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6h_FP8bYWW6_XNyEGq1KJ06b1HAwPqA6qCKaL_yB4RA&s=10',
         isFavorite: false,
         inPlaylist: false
       },
 
       {
         id: 7,
-        title: 'Paper Planes',
-        artist: 'Sunday Club',
+        title: 'With a Smile',
+        artist: 'Eraserheads',
         genre: 'OPM',
-        duration: '4:02',
-        cover: 'https://picsum.photos/seed/paperplanes/600/600',
+        duration: '4:37',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRF7JcDs5SvHD2RO11cdM7f4eNsjrghjqeFtWmOuRLC0w&s=10',
         isFavorite: false,
         inPlaylist: true
       },
 
       {
         id: 8,
-        title: 'City Noise',
-        artist: 'Northbound',
-        genre: 'Rock',
-        duration: '3:47',
-        cover: 'https://picsum.photos/seed/citynoise/600/600',
+        title: '214',
+        artist: 'Rivermaya',
+        genre: 'OPM',
+        duration: '4:35',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy_8hnMqA4RHqTAKfvX4Nzt0KPjI_evaOSludBKZPcAQ&s=10',
         isFavorite: false,
         inPlaylist: false
       },
 
       {
         id: 9,
-        title: 'Slow Motion',
-        artist: 'Velvet Room',
-        genre: 'R&B',
-        duration: '4:21',
-        cover: 'https://picsum.photos/seed/slowmotion/600/600',
+        title: 'Migraine',
+        artist: 'Moonstar88',
+        genre: 'OPM',
+        duration: '4:03',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbakfOpwvwjzwzzJPFoGdBCuNKOJxP8c7aZInscXZ5dw&s=10',
         isFavorite: true,
         inPlaylist: false
       },
 
       {
         id: 10,
-        title: 'Weekend Energy',
-        artist: 'Juno Beats',
-        genre: 'Hip-Hop',
-        duration: '3:18',
-        cover: 'https://picsum.photos/seed/weekendenergy/600/600',
+        title: 'Nobela',
+        artist: 'Join The Club',
+        genre: 'OPM',
+        duration: '4:14',
+        cover: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdojML_O-EJDWnki4BdHKSP25hcrHirQYUSzvjMyOY4A&s=10',
         isFavorite: false,
         inPlaylist: false
       }
-
     ]
 
-
     return {
-
-      appName: 'My Music Playlist',
+      appName: 'My OPM Playlist',
 
       songs,
 
@@ -611,279 +532,144 @@ export default defineComponent({
 
       genres: [
         'All',
-        'Pop',
-        'Rock',
-        'Hip-Hop',
-        'R&B',
         'OPM'
       ]
-
     }
-
   },
 
-
-  /*
-   * computed properties
-   */
-
   computed: {
-
-    /*
-     * computed property:
-     * Filters songs based on search and genre.
-     */
     filteredSongs(): Song[] {
-
       const query =
         this.searchQuery.trim().toLowerCase()
 
-
       return this.songs.filter((song) => {
-
         const matchesSearch =
-
           !query ||
-
           song.title
             .toLowerCase()
             .includes(query) ||
-
           song.artist
             .toLowerCase()
             .includes(query)
 
-
         const matchesGenre =
-
           this.selectedFilter === 'All' ||
-
           song.genre === this.selectedFilter
 
-
         const matchesPlaylist =
-
           !this.showPlaylistOnly ||
-
           song.inPlaylist
 
-
         return (
-
           matchesSearch &&
-
           matchesGenre &&
-
           matchesPlaylist
-
         )
-
       })
-
     },
 
-
-    /*
-     * computed property:
-     * Counts songs in the playlist.
-     */
     playlistCount(): number {
-
       return this.songs.filter(
         song => song.inPlaylist
       ).length
-
     },
 
-
-    /*
-     * computed property:
-     * Counts favorite songs.
-     */
     favoriteCount(): number {
-
       return this.songs.filter(
         song => song.isFavorite
       ).length
-
     }
-
   },
 
-
-  /*
-   * METHODS
-   */
   methods: {
-
-    /*
-     * method:
-     * Adds a song to the playlist.
-     */
     addSong(song: Song) {
-
       song.inPlaylist = true
 
       this.showNotification(
         `"${song.title}" added to your playlist.`
       )
-
     },
 
-
-    /*
-     * method:
-     * Removes a song from the playlist.
-     */
     removeSong(id: number) {
-
       const song =
         this.songs.find(
           item => item.id === id
         )
 
-
       if (song) {
-
         song.inPlaylist = false
 
         this.showNotification(
           `"${song.title}" removed from your playlist.`
         )
-
       }
-
     },
 
-
-    /*
-     * method:
-     * Favorites / unfavorites a song.
-     */
     toggleFavorite(song: Song) {
-
       song.isFavorite =
         !song.isFavorite
 
-
       this.showNotification(
-
         song.isFavorite
-
           ? `"${song.title}" added to favorites.`
-
           : `"${song.title}" removed from favorites.`
-
       )
-
     },
 
-
-    /*
-     * method:
-     * Selects the current song.
-     */
     selectSong(song: Song) {
-
       this.currentSong = song
 
       this.showNotification(
         `Now viewing "${song.title}".`
       )
-
     },
 
-
-    /*
-     * Vue event method for search.
-     */
     searchSongs() {
-
-      // Search updates automatically using v-model.
-
+      // Search is handled automatically
+      // through the filteredSongs computed property.
     },
 
-
-    /*
-     * Vue event method for filtering.
-     */
     filterSongs() {
-
-      // Filtering updates automatically using v-model.
-
+      // Filtering is handled automatically
+      // through the filteredSongs computed property.
     },
 
-
-    /*
-     * Shows only playlist songs.
-     */
     togglePlaylistOnly() {
-
       this.showPlaylistOnly =
         !this.showPlaylistOnly
-
     },
 
-
-    /*
-     * Resets all filters.
-     */
     resetFilters() {
-
       this.searchQuery = ''
-
       this.selectedFilter = 'All'
-
       this.showPlaylistOnly = false
-
     },
 
-
-    /*
-     * Changes between light and dark mode.
-     */
     toggleDarkMode() {
-
       this.darkMode =
         !this.darkMode
-
 
       document.body.classList.toggle(
         'dark-mode',
         this.darkMode
       )
-
     },
 
-
-    /*
-     * Displays a temporary notification.
-     */
     showNotification(message: string) {
-
       this.notification = message
 
-
       if (this.notificationTimer) {
-
         clearTimeout(
           this.notificationTimer
         )
-
       }
-
 
       this.notificationTimer =
         setTimeout(() => {
-
           this.notification = ''
-
         }, 2200)
-
     }
-
   }
-
 })
-
 </script>
+```
